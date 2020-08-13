@@ -9,13 +9,13 @@ const INGREDIENT_PRICES = {
   salad: 150,
   cheese: 250,
   bacon: 800,
-  meat: 1500
+  meat: 1500,
 };
 const INGREDIENT_MNNAMES = {
   salad: "Салад",
   cheese: "Бяслаг",
   bacon: "Гахайн мах",
-  meat: "Үхрийн мах"
+  meat: "Үхрийн мах",
 };
 
 class BurgerBuilder extends Component {
@@ -25,11 +25,11 @@ class BurgerBuilder extends Component {
       salad: 0,
       cheese: 0,
       bacon: 0,
-      meat: 0
+      meat: 0,
     },
     totalPrice: 0,
     purchasing: false,
-    confirmOrder: false
+    confirmOrder: false,
   };
   showConfirmModal = () => {
     this.setState({ confirmOrder: true });
@@ -40,36 +40,36 @@ class BurgerBuilder extends Component {
   onContinue = () => {
     console.log("continueee.....");
   };
-  ortsNemeh = type => {
+  ortsNemeh = (type) => {
     const newIngredients = {
-      ...this.state.ingredients
+      ...this.state.ingredients,
     };
     newIngredients[type]++;
     const newPrice = this.state.totalPrice + INGREDIENT_PRICES[type];
     this.setState({
       purchasing: true,
       ingredients: newIngredients,
-      totalPrice: newPrice
+      totalPrice: newPrice,
     });
   };
-  ortsHasah = type => {
+  ortsHasah = (type) => {
     if (this.state.ingredients[type] > 0) {
       const newIngredients = {
-        ...this.state.ingredients
+        ...this.state.ingredients,
       };
       newIngredients[type]--;
       const newPrice = this.state.totalPrice - INGREDIENT_PRICES[type];
       this.setState({
         purchasing: newPrice > 0,
         ingredients: newIngredients,
-        totalPrice: newPrice
+        totalPrice: newPrice,
       });
     }
   };
 
   render() {
     const disabledIngredients = {
-      ...this.state.ingredients
+      ...this.state.ingredients,
     };
     for (let key in disabledIngredients) {
       disabledIngredients[key] = disabledIngredients[key] <= 0;

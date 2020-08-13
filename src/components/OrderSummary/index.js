@@ -2,13 +2,13 @@ import React from "react";
 import Button from "../General/Button";
 import css from "./style.module.css";
 
-const OrderSummary = props => {
+const OrderSummary = (props) => {
   return (
     <div className={css.OrderSummary}>
       <h3>Таны захиалга</h3>
       <p>Таны сонгосон орцууд:</p>
       <ul>
-        {Object.keys(props.ingredients).map(el => (
+        {Object.keys(props.ingredients).map((el) => (
           <li key={el}>
             {props.INGREDIENT_MNNAMES[el]}: {props.ingredients[el]}
           </li>
